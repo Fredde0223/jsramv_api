@@ -184,4 +184,23 @@ function getTwo(res, req) {
 
 router.get("/week/2", (req, res) => getTwo(res, req.body));
 
+function getThree(res, req) {
+    db.all("SELECT * FROM reports",
+    (err, rows) => {
+        if (err) {
+            return res.status(500).json({
+                errors: {
+                    status: 500,
+                    source: "/reports/edit",
+                    title: "Database error",
+                    detail: err.message
+                }
+            });
+        }
+        res.json( { data: rows[2] } );
+    });
+}
+
+router.get("/week/3", (req, res) => getThree(res, req.body));
+
 module.exports = router;
