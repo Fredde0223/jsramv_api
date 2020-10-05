@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1601898894459" clover="3.2.0">
-  <project timestamp="1601898894459" name="All files">
+<coverage generated="1601900823813" clover="3.2.0">
+  <project timestamp="1601900823813" name="All files">
     <metrics statements="155" coveredstatements="141" conditionals="58" coveredconditionals="43" methods="36" coveredmethods="36" elements="249" coveredelements="220" complexity="0" loc="155" ncloc="155" packages="3" files="7" classes="7"/>
     <package name="mitt-api">
       <metrics statements="29" coveredstatements="27" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
