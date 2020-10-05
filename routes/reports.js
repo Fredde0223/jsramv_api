@@ -1,5 +1,4 @@
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 
@@ -7,7 +6,7 @@ dotenv.config();
 
 const router = express.Router();
 
-const db = new sqlite3.Database('./db/textsReports.sqlite');
+const db = require("../db/databaseReports.js");
 
 const jwtSecret = process.env.JWT_SECRET;
 
@@ -15,7 +14,7 @@ function checkToken(req, res, next) {
     const token = req.headers['x-access-token'];
 
     if (token) {
-        jwt.verify(token, jwtSecret, function(err, decoded) {
+        jwt.verify(token, jwtSecret, function(err) {
             if (err) {
                 return res.status(500).json({
                     errors: {
@@ -84,21 +83,21 @@ router.post("/",
     (req, res, next) => checkToken(req, res, next),
     (req, res) => addReport(res, req.body));
 
-function getReports(res, req) {
+function getReports(res) {
     db.all("SELECT * FROM reports",
-    (err, rows) => {
-        if (err) {
-            return res.status(500).json({
-                errors: {
-                    status: 500,
-                    source: "/reports/edit",
-                    title: "Database error",
-                    detail: err.message
-                }
-            });
-        }
-        res.json( { data: rows } );
-    });
+        (err, rows) => {
+            if (err) {
+                return res.status(500).json({
+                    errors: {
+                        status: 500,
+                        source: "/reports/edit",
+                        title: "Database error",
+                        detail: err.message
+                    }
+                });
+            }
+            res.json( { data: rows } );
+        });
 }
 
 router.get("/edit", (req, res) => getReports(res, req.body));
@@ -146,59 +145,59 @@ router.put("/edit",
     (req, res, next) => checkToken(req, res, next),
     (req, res) => editReports(res, req.body));
 
-function getOne(res, req) {
+function getOne(res) {
     db.all("SELECT * FROM reports",
-    (err, rows) => {
-        if (err) {
-            return res.status(500).json({
-                errors: {
-                    status: 500,
-                    source: "/reports/edit",
-                    title: "Database error",
-                    detail: err.message
-                }
-            });
-        }
-        res.json( { data: rows[0] } );
-    });
+        (err, rows) => {
+            if (err) {
+                return res.status(500).json({
+                    errors: {
+                        status: 500,
+                        source: "/reports/edit",
+                        title: "Database error",
+                        detail: err.message
+                    }
+                });
+            }
+            res.json( { data: rows[0] } );
+        });
 }
 
 router.get("/week/1", (req, res) => getOne(res, req.body));
 
-function getTwo(res, req) {
+function getTwo(res) {
     db.all("SELECT * FROM reports",
-    (err, rows) => {
-        if (err) {
-            return res.status(500).json({
-                errors: {
-                    status: 500,
-                    source: "/reports/edit",
-                    title: "Database error",
-                    detail: err.message
-                }
-            });
-        }
-        res.json( { data: rows[1] } );
-    });
+        (err, rows) => {
+            if (err) {
+                return res.status(500).json({
+                    errors: {
+                        status: 500,
+                        source: "/reports/edit",
+                        title: "Database error",
+                        detail: err.message
+                    }
+                });
+            }
+            res.json( { data: rows[1] } );
+        });
 }
 
 router.get("/week/2", (req, res) => getTwo(res, req.body));
 
-function getThree(res, req) {
+function getThree(res) {
     db.all("SELECT * FROM reports",
-    (err, rows) => {
-        if (err) {
-            return res.status(500).json({
-                errors: {
-                    status: 500,
-                    source: "/reports/edit",
-                    title: "Database error",
-                    detail: err.message
-                }
-            });
-        }
-        res.json( { data: rows[2] } );
-    });
+        (err, rows) => {
+            if (err) {
+                return res.status(500).json({
+                    errors: {
+                        status: 500,
+                        source: "/reports/edit",
+                        title: "Database error",
+                        detail: err.message
+                    }
+                });
+            }
+            res.json( { data: rows[2] } );
+        });
 }
 
 router.get("/week/3", (req, res) => getThree(res, req.body));

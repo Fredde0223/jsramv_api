@@ -1,10 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
-const sqlite3 = require('sqlite3').verbose();
 
 const router = express.Router();
 
-const db = new sqlite3.Database('./db/texts.sqlite');
+const db = require("../db/databaseUsers.js");
 
 function register(res, body) {
     const email = body.email;

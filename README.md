@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Fredde0223/jsramv_api.svg?branch=master)](https://travis-ci.org/github/Fredde0223/jsramv_api)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Fredde0223/jsramv_api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Fredde0223/jsramv_api/?branch=master)
+
 Create file:
 
 package.json

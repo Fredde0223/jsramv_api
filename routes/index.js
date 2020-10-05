@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     const data = {
         data: {
             title: "Om mig",
-            about: "Hej, jag heter Fredrik och är 29 år. Jag är född och uppvuxen i Hässleholm i Skåne, men flyttade för sex år sedan till Umeå. Jag bor för tillfället i Holmsund utanför Umeå med min sambo Malin."
+            about: "Hej, jag heter Fredrik och är 29 år. Jag är född och" +
+            "uppvuxen i Hässleholm i Skåne, men flyttade för sex år sedan" +
+            "till Umeå. Jag bor för tillfället i Holmsund utanför Umeå med" +
+            "min sambo Malin."
         }
     };
 
