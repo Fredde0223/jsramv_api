@@ -8,7 +8,13 @@ const router = express.Router();
 
 const db = require("../db/databaseReports.js");
 
-const jwtSecret = process.env.JWT_SECRET;
+var jwtSecret = "";
+
+if (process.env.NODE_ENV !== 'test') {
+    jwtSecret = process.env.JWT_SECRET;
+} else {
+    jwtSecret = "testsecret";
+}
 
 function checkToken(req, res, next) {
     const token = req.headers['x-access-token'];
