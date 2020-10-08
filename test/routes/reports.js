@@ -196,4 +196,16 @@ describe('testing get weeks', () => {
                 });
         });
     });
+
+    describe('GET /reports/week/4', () => {
+        it('should have status 200', (done) => {
+            chai.request(server)
+                .get("/reports/week/4")
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.an("object");
+                    done();
+                });
+        });
+    });
 });
